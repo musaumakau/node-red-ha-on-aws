@@ -8,18 +8,22 @@ on:
 
 jobs:
   build:
-    runs-on: ubuntu-latest
-
+  
+   runs-on: ubuntu-latest
+    
   steps:
-   - uses: actions/checkout@v3
-   - uses: actions/setup-node@v3
-     with:
-       node-version: 16
-   - run: npm ci
-   - run: npm test
+  
+  - uses: actions/checkout@v3
+  
+  - name: Set up Node
+  - uses: actions/setup-node@v3
+    with:
+     node-version: 16
+  - run: npm ci
+  - run: npm test
 
-   - name: Build
-      run: |
+  - name: Build
+    run: |
        npm install -g gulp-cli
        gulp minify
        gulp build
