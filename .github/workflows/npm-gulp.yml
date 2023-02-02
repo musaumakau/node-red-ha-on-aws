@@ -36,9 +36,9 @@ jobs:
          aws_secret_key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
          application_name: MyApplicationName
          environment_name: MyApplication-Environment
-         version_label: 12345
+         version_label: 123453
          region: us-west-2
-         deployment_package: ./dist/*.zip  
+         deployment_package: dist/*.zip  
   
 
   
