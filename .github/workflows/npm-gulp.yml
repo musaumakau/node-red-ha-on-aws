@@ -38,7 +38,7 @@ jobs:
          environment_name: MyApplication-Environment
          version_label: 123453
          region: us-west-2
-         deployment_package: dist/*.zip  
+         deployment_package: dist/1.0.0-node-red-on-elastic-beanstalk-2023.*.zip  
   
 
   
