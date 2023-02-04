@@ -38,7 +38,7 @@ jobs:
          environment_name: MyApplication-Environment
          version_label: 123453
          region: eu-west-1
-         deployment_package: ./dist/.*.zip  
+         deployment_package: ./.*.zip  
   
 
   
