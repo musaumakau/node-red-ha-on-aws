@@ -23,7 +23,6 @@ jobs:
     - name: Install Dependencies
       run: |
        npm install
-       npm start
        npm install -g gulp-cli
     - name: Build
       run: |
