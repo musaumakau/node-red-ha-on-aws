@@ -28,7 +28,7 @@ jobs:
       run: |
        gulp minify
        gulp build
-       ls /dist
+       ls 
        
  
     
