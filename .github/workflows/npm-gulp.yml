@@ -4,15 +4,6 @@
 #
 #-----------------------------------------------------------------------------------------
 
-name: CI-CD-Pipeline-to-AWS-ElasticBeanstalk
-env:
-  EB_PACKAGE_S3_BUCKET_NAME : "node-red-bucket-development"
-  EB_APPLICATION_NAME       : "Node-red"
-  EB_ENVIRONMENT_NAME       : "developement"
-  DEPLOY_PACKAGE_NAME       : "Node-red-${{ github.sha }}.zip"
-  AWS_REGION_NAME           : "eu-west-1"
-
-
 on:
   push:
     branches: [ "master" ]
