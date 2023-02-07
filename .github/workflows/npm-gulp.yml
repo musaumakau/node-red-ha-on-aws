@@ -9,7 +9,7 @@ env:
   EB_APPLICATION_NAME       : "Node-red"
   EB_ENVIRONMENT_NAME       : "developement"
   AWS_REGION_NAME           : "eu-west-1"
-  DEPLOY_PACKAGE_NAME       : "node-red"
+  DEPLOY_PACKAGE_NAME       : "node-red-${{ github.sha }}.zip"
 
 on:
   push:
@@ -34,10 +34,10 @@ jobs:
       run: |
        npm install
        npm install -g gulp-cli
-    - name: Build
-      run: |
-       gulp minify
-       gulp build
+       
+    - name: Make zip pkg
+      run: zip -r ${{ env.DEPLOY_PKG_NAME }} ./ -x *.git*
+
     - name: Configure my AWS Credentils
       uses: aws-actions/configure-aws-credentials@v1-node16
       with:
