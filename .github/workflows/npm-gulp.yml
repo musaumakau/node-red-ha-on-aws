@@ -9,7 +9,7 @@ env:
   EB_APPLICATION_NAME       : "Node-red"
   EB_ENVIRONMENT_NAME       : "developement"
   AWS_REGION_NAME           : "eu-west-1"
-  DEPLOY_PACKAGE_NAME       : "node-red-${{ github.sha }}.zip"
+  DEPLOY_PACKAGE_NAME       : "*-${{ github.sha }}.zip"
 
 on:
   push:
