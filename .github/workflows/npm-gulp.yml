@@ -35,8 +35,10 @@ jobs:
        npm install
        npm install -g gulp-cli
        
-    - name: Make zip pkg
-      run: zip -r ${{ env.DEPLOY_PKG_NAME }} ./ -x *.git*
+    - name: Build
+      run: |
+       gulp minify
+       gulp build
 
     - name: Configure my AWS Credentils
       uses: aws-actions/configure-aws-credentials@v1-node16
