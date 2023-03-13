@@ -5,11 +5,11 @@
 #-----------------------------------------------------------------------------------------
 name: CI-CD-Pipeline-to-AWS-ElasticBeanstalk
 env:
-  EB_PACKAGE_S3_BUCKET_NAME : "node-red-bucket-development"
+  EB_PACKAGE_S3_BUCKET_NAME : "elasticbeanstalk-eu-west-1-830621850046"
   EB_APPLICATION_NAME       : "Node-red"
   EB_ENVIRONMENT_NAME       : "developement"
   AWS_REGION_NAME           : "eu-west-1"
-  DEPLOY_PACKAGE_NAME       : " *.zip "
+  DEPLOY_PACKAGE_NAME       : "Node-red-${{ github.sha }}.zip"
 
 on:
   push:
@@ -40,6 +40,11 @@ jobs:
       run: |
        gulp minify
        gulp build
+       
+    - name: Create ZIP deployment package
+      run : |
+       cd dist
+       zip -r ${{ env.DEPLOY_PACKAGE_NAME }} 
     - name: Configure my AWS Credentils
       uses: aws-actions/configure-aws-credentials@v1-node16
       with:
@@ -48,7 +53,7 @@ jobs:
         aws-region           : ${{ env.AWS_REGION_NAME }}
     - name: Copy our Deployment package to S3 bucket
       run : |
-       aws s3 ls
+       cd dist
        aws s3 cp dist/*.zip s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME}}/
     
          
