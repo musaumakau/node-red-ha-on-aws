@@ -8,6 +8,7 @@ phases:
     commands:
       - echo Installing source NPM dependencies
       - npm install
+      - npm install -g gulp-cli
   build:
     commands:
       - echo Building Node Red
