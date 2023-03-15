@@ -23,6 +23,7 @@ artifacts:
   files:
    - dist/**/*
    - package.json
+   - settings.js
    
     
    
