@@ -22,5 +22,6 @@ phases:
 artifacts:
   files:
    - dist/**/*
+   name: myname-$(date +%Y-%m-%d) 
     
    
