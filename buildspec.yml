@@ -1,3 +1,5 @@
+#Buildspec file to automate Node-red build.
+
 version: 0.2
 
 phases:
