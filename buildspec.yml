@@ -1,4 +1,4 @@
-#Buildspec file to automate Node-red build.#
+#Buildspec file to automate Node-red build.
 
 version: 0.2
 
