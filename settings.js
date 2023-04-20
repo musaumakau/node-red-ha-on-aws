@@ -20,19 +20,20 @@
  *
  **/
 
-module.exports = {
-
-    /*******************************************************************************
-     * Flow File and User Directory Settings
-     *  - flowFile
-     *  - credentialSecret
-     *  - flowFilePretty
-     *  - userDir
-     *  - nodesDir
-     ******************************************************************************/
-    
-        /** The file containing the flows. If not set, defaults to flows_<hostname>.json **/
-        flowFile: 'flows.json',
+ module.exports = {
+    // the tcp port that the Node-RED web server is listening on
+    uiPort: 8081,
+    awsRegion: process.env.EFS_REGION,
+    //twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
+    // awsS3Bucket: process.env.STATE_STORAGE_BUCKET,
+    // storageModule: require('node-red-contrib-storage-s3'),
+    // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
+    // To listen on all IPv6 addresses, set uiHost to "::",
+    // The following property can be used to listen on a specific interface. For
+    // example, the following would only allow connections from the local machine.
+    //uiHost: "127.0.0.1",
+    /** The file containing the flows. If not set, defaults to flows_<hostname>.json **/
+    flowFile: 'flows.json',
     
         /** By default, credentials are encrypted in storage using a generated key. To
          * specify your own secret, set the following property.
