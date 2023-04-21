@@ -239,10 +239,10 @@ module.exports = {
     // can be accessed in a function block as:
     //    context.global.os
 
-    functionGlobalContext: {
-        aws: require('aws-sdk'),
-        twilio: require('twilio')
-    },
+   // functionGlobalContext: {
+   //     aws: require('aws-sdk'),
+   //     twilio: require('twilio')
+   // },
 
     // Context Storage
     // The following property can be used to enable context storage. The configuration
