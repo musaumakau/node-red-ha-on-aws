@@ -10,7 +10,7 @@ env:
   EB_ENVIRONMENT_NAME       : "developement"
   AWS_REGION_NAME           : "eu-west-1"
   DEPLOY_PACKAGE_NAME       : "node-red-on-elastic-beanstalk.zip"
-  #DEPLOY_PACKAGE_NAME       : "Node-red-${{ github.sha }}.zip"
+  #DEPLOY_PACKAGE_NAME       : "Node-red-${{ github.sha }}.zip"#
 
 on:
   push:
