@@ -9,9 +9,9 @@
 
 name: CI-CD-Pipeline-to-AWS-ElasticBeanstalk
 env:
-  EB_PACKAGE_S3_BUCKET_NAME : "node-red-source-development"
-  EB_APPLICATION_NAME       : "Node-RED"
-  EB_ENVIRONMENT_NAME       : "Production"
+  EB_PACKAGE_S3_BUCKET_NAME : "elasticbeanstalk-eu-west-1-830621850046"
+  EB_APPLICATION_NAME       : "Node-red"
+  EB_ENVIRONMENT_NAME       : "developement"
   AWS_REGION_NAME           : "eu-west-1"
   DEPLOY_PACKAGE_NAME       : "node-red-on-elastic-beanstalk.zip"
   # DEPLOY_PACKAGE_NAME       : "1.0.0-node-red-on-elastic-beanstalk-2023.4.21_10_08_08.zip"
