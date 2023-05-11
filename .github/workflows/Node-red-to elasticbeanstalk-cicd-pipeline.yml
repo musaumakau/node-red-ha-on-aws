@@ -9,12 +9,11 @@
 
 name: CI-CD-Pipeline-to-AWS-ElasticBeanstalk
 env:
-  EB_PACKAGE_S3_BUCKET_NAME : "elasticbeanstalk-eu-west-1-830621850046"
-  EB_APPLICATION_NAME       : "Node-red"
-  EB_ENVIRONMENT_NAME       : "developement"
-  AWS_REGION_NAME           : "eu-west-1"
+  EB_PACKAGE_S3_BUCKET_NAME : "node-red-source-development"
+  EB_APPLICATION_NAME       : "Node-RED"
+  EB_ENVIRONMENT_NAME       : "Production"
+  AWS_REGION_NAME           : "eu-central-1"
   DEPLOY_PACKAGE_NAME       : "node-red-on-elastic-beanstalk.zip"
-  # DEPLOY_PACKAGE_NAME       : "1.0.0-node-red-on-elastic-beanstalk-2023.4.21_10_08_08.zip"
 
 
 on:
@@ -27,15 +26,15 @@ jobs:
   ci_pipeline:
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [16,18]
+    # strategy:
+    #   matrix:
+    #     node-version: [16,18]
     steps:
-    - uses: actions/checkout@v3
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
+    - uses: actions/checkout@v2
+    - name: Use Node.js 16
+      uses: actions/setup-node@v2
       with:
-        node-version: ${{ matrix.node-version }}
+        node-version: 16
     - name: Install Dependencies
       run: |
        npm install
@@ -52,42 +51,24 @@ jobs:
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         aws-region           : ${{ env.AWS_REGION_NAME }}
 
-    - name: zip the dist folder
-      run : zip -r ${{env.DEPLOY_PACKAGE_NAME}} dist/*
+    - name: move file to deployment package
+      run : cd dist/ && mv * ${{env.DEPLOY_PACKAGE_NAME}}
 
     - name: Copy our Deployment package to S3 bucket
-      run : aws s3 cp ${{env.DEPLOY_PACKAGE_NAME}} s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME}}/
+      run : cd dist/ && aws s3 cp ${{env.DEPLOY_PACKAGE_NAME}} s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME}}/${{env.DEPLOY_PACKAGE_NAME}}
 
-    # - name: Copy our Deployment package to S3 bucket
-    #   run : aws s3 cp dist/*.zip s3://${{ env.EB_PACKAGE_S3_BUCKET_NAME}}/
-         
-    - name: Print a message on completion of CI Pipeline
-      run : echo "CI Pipeline part finished successfully"
-      
-  cd_pipeline:
-        runs-on: ubuntu-latest
-        needs: [ci_pipeline]
-       
-        steps:
-         - name: Configure  AWS Credentils
-           uses: aws-actions/configure-aws-credentials@v1-node16
-           with:
-             aws-access-key-id    : ${{ secrets.AWS_ACCESS_KEY_ID }}
-             aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-             aws-region           : ${{ env.AWS_REGION_NAME }}
-         - name: Create new ElasticBeanstalk Applicaiton Version
-           run : aws elasticbeanstalk create-application-version --application-name ${{ env.EB_APPLICATION_NAME }}  --version-label v4 --description NoderedV1 --source-bundle S3Bucket="${{ env.EB_PACKAGE_S3_BUCKET_NAME }}",S3Key="${{ env.DEPLOY_PACKAGE_NAME }}" --auto-create-application 
+    - name: Create new ElasticBeanstalk Application Version
+      run: |
+          aws elasticbeanstalk create-application-version \
+          --application-name MyAwesomeApp \
+          --source-bundle S3Bucket="elasticbeanstalk-eu-west-1-830621850046",S3Key=${{env.DEPLOY_PACKAGE_NAME}}\
+          --version-label "ver-${{ github.sha }}" \
+          --description "commit-sha-${{ github.sha }}"
 
-         - name: Deploy our new Application Version
-           run : aws elasticbeanstalk update-environment --environment-name ${{ env.EB_ENVIRONMENT_NAME }}
-          #  run : aws elasticbeanstalk update-environment --environment-name ${{ env.EB_ENVIRONMENT_NAME }} --version-label "v1"
-           
-         - name: Print a message on completion of CD Pipeline
-           run : echo "CD Pipeline part finished successfully"  
-        
- 
-
-
-
-    
-  
+    - name: Update Environment
+      run : |
+        aws elasticbeanstalk update-environment \
+          --environment-name ${{ env.EB_ENVIRONMENT_NAME }} \
+          --version-label v1 \
+          --region ${{ env.AWS_REGION_NAME }}
+          
