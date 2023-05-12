@@ -21,7 +21,7 @@ require('dotenv').config();
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
-    uiPort: 8081,
+    // uiPort: 8081,
     // awsRegion: process.env.EFS_REGION,
     // twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
     // awsS3Bucket: process.env.STATE_STORAGE_BUCKET,
@@ -187,10 +187,10 @@ module.exports = {
     // in the HTTP nodes.
     // See https://github.com/troygoode/node-cors#configuration-options for
     // details on its contents. The following is a basic permissive set of options:
-    httpNodeCors: {
-        origin: "*",
-        methods: "GET,PUT,POST,DELETE"
-    },
+    // httpNodeCors: {
+    //     origin: "*",
+    //     methods: "GET,PUT,POST,DELETE"
+    // },
 
     // If you need to set an http proxy please set an environment variable
     // called http_proxy (or HTTP_PROXY) outside of Node-RED in the operating system.
