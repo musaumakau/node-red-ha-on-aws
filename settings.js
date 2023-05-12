@@ -17,13 +17,13 @@
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
 //var fs = require("fs");
-require('dotenv').config();
+// require('dotenv').config();
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
-    // uiPort: 8081,
-    // awsRegion: process.env.EFS_REGION,
-    // twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
+    uiPort: 8081,
+    awsRegion: process.env.EFS_REGION,
+    //twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
     // awsS3Bucket: process.env.STATE_STORAGE_BUCKET,
     // storageModule: require('node-red-contrib-storage-s3'),
     // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
@@ -124,37 +124,37 @@ module.exports = {
     // To password protect the Node-RED editor and admin API, the following
     // property can be used. See http://nodered.org/docs/security.html for details.
 
-    // adminAuth: {
-    //     type: "strategy",
-    //     strategy: {
-    //         name: "auth0",
-    //         label: 'Sign in with Auth0',
-    //         icon: "fa-auth0",
-    //         strategy: require("passport-auth0").Strategy,
-    //         options: {
-    //             domain: process.env.AUTH0_DOMAIN,
-    //             clientID: process.env.AUTH0_CLIENT_ID,
-    //             clientSecret: process.env.AUTH0_CLIENT_SECRET,
-    //             callbackURL: process.env.BASE_URL + "/auth/strategy/callback",
-    //             scope: ['openid', 'email', 'profile'],
-    //             response_type: 'code',
-    //             verify: function (accessToken, refreshToken, profile, done) {
-    //                 //by default auth0 does not include a username attribute in its Profile class, so 
-    //                 //we convert it to a plain object and copy the name attribute from the original 
-    //                 //profile json to the expected username slot
-    //                 let extended_profile = Object.assign({}, profile);
-    //                 extended_profile.username = extended_profile.name = extended_profile._json.name;
-    //                 // console.log(extended_profile);
-    //                 done(null, extended_profile);
-    //             }
-    //         }
-    //     },
-    //     users: [{
-    //             username: "<add your username here>",
-    //             permissions: ["*"]
-    //         }
-    //     ]
-    //  },
+   // adminAuth: {
+   //   type: "strategy",
+    //    strategy: {
+      //      name: "auth0",
+        //    label: 'Sign in with Auth0',
+          //  icon: "fa-auth0",
+            //strategy: require("passport-auth0").Strategy,
+          //  options: {
+            //    domain: process.env.AUTH0_DOMAIN,
+              //  clientID: process.env.AUTH0_CLIENT_ID,
+               // //clientSecret: process.env.AUTH0_CLIENT_SECRET,
+              //  callbackURL: process.env.BASE_URL + "/auth/strategy/callback",
+                //scope: ['openid', 'email', 'profile'],
+                //response_type: 'code',
+                //verify: function (accessToken, refreshToken, profile, done) {
+                    //by default auth0 does not include a username attribute in its Profile class, so 
+                    //we convert it to a plain object and copy the name attribute from the original 
+                    //profile json to the expected username slot
+                   // let extended_profile = Object.assign({}, profile);
+                  //  extended_profile.username = extended_profile.name = extended_profile._json.name;
+                    // console.log(extended_profile);
+                  //  done(null, extended_profile);
+         //       }
+         //   }
+      //  },
+      //  users: [{
+       //         username: "<add your username here>",
+       //         permissions: ["*"]
+      //     }
+      //   ]
+    //},
 
     // To password protect the node-defined HTTP endpoints (httpNodeRoot), or
     // the static content (httpStatic), the following properties can be used.
@@ -187,10 +187,10 @@ module.exports = {
     // in the HTTP nodes.
     // See https://github.com/troygoode/node-cors#configuration-options for
     // details on its contents. The following is a basic permissive set of options:
-    // httpNodeCors: {
-    //     origin: "*",
-    //     methods: "GET,PUT,POST,DELETE"
-    // },
+    httpNodeCors: {
+        origin: "*",
+        methods: "GET,PUT,POST,DELETE"
+    },
 
     // If you need to set an http proxy please set an environment variable
     // called http_proxy (or HTTP_PROXY) outside of Node-RED in the operating system.
@@ -274,30 +274,30 @@ module.exports = {
     //     },
     // },
     // Configure the logging output
-    // logging: {
-    //     // Only console logging is currently supported
-    //     console: {
-    //         // Level of logging to be recorded. Options are:
-    //         // fatal - only those errors which make the application unusable should be recorded
-    //         // error - record errors which are deemed fatal for a particular request + fatal errors
-    //         // warn - record problems which are non fatal + errors + fatal errors
-    //         // info - record information about the general running of the application + warn + error + fatal errors
-    //         // debug - record information which is more verbose than info + info + warn + error + fatal errors
-    //         // trace - record very detailed logging + debug + info + warn + error + fatal errors
-    //         // off - turn off all logging (doesn't affect metrics or audit)
-    //         level: "fatal",
-    //         // Whether or not to include metric events in the log output
-    //         metrics: false,
-    //         // Whether or not to include audit events in the log output
-    //         audit: false
-    //     }
-    // },
+    logging: {
+        // Only console logging is currently supported
+        console: {
+            // Level of logging to be recorded. Options are:
+            // fatal - only those errors which make the application unusable should be recorded
+            // error - record errors which are deemed fatal for a particular request + fatal errors
+            // warn - record problems which are non fatal + errors + fatal errors
+            // info - record information about the general running of the application + warn + error + fatal errors
+            // debug - record information which is more verbose than info + info + warn + error + fatal errors
+            // trace - record very detailed logging + debug + info + warn + error + fatal errors
+            // off - turn off all logging (doesn't affect metrics or audit)
+            level: "fatal",
+            // Whether or not to include metric events in the log output
+            metrics: false,
+            // Whether or not to include audit events in the log output
+            audit: false
+        }
+    },
 
-    // // Customising the editor
-    // editorTheme: {
-    //     projects: {
-    //         // To enable the Projects feature, set this value to true
-    //         enabled: true
-    //     }
-    // },
+    // Customising the editor
+    editorTheme: {
+        projects: {
+            // To enable the Projects feature, set this value to true
+            enabled: true
+        }
+    },
 };
