@@ -22,7 +22,7 @@ require('dotenv').config();
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
     uiPort: 8081,
-    awsRegion: process.env.EFS_REGION,
+    // awsRegion: process.env.EFS_REGION,
     // twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
     // awsS3Bucket: process.env.STATE_STORAGE_BUCKET,
     // storageModule: require('node-red-contrib-storage-s3'),
@@ -81,7 +81,7 @@ module.exports = {
     // Note: once you set this property, do not change it - doing so will prevent
     // node-red from being able to decrypt your existing credentials and they will be
     // lost.
-    credentialSecret: "<add random key here>",
+    // credentialSecret: "<add random key here>",
 
     // By default, all user data is stored in the Node-RED install directory. To
     // use a different location, the following property can be used
