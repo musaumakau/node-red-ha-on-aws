@@ -23,7 +23,7 @@ module.exports = {
     // the tcp port that the Node-RED web server is listening on
     uiPort: 8081,
     awsRegion: process.env.EFS_REGION,
-    twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
+    // twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
     // awsS3Bucket: process.env.STATE_STORAGE_BUCKET,
     // storageModule: require('node-red-contrib-storage-s3'),
     // By default, the Node-RED UI accepts connections on all IPv4 interfaces.
@@ -124,37 +124,37 @@ module.exports = {
     // To password protect the Node-RED editor and admin API, the following
     // property can be used. See http://nodered.org/docs/security.html for details.
 
-    adminAuth: {
-        type: "strategy",
-        strategy: {
-            name: "auth0",
-            label: 'Sign in with Auth0',
-            icon: "fa-auth0",
-            strategy: require("passport-auth0").Strategy,
-            options: {
-                domain: process.env.AUTH0_DOMAIN,
-                clientID: process.env.AUTH0_CLIENT_ID,
-                clientSecret: process.env.AUTH0_CLIENT_SECRET,
-                callbackURL: process.env.BASE_URL + "/auth/strategy/callback",
-                scope: ['openid', 'email', 'profile'],
-                response_type: 'code',
-                verify: function (accessToken, refreshToken, profile, done) {
-                    //by default auth0 does not include a username attribute in its Profile class, so 
-                    //we convert it to a plain object and copy the name attribute from the original 
-                    //profile json to the expected username slot
-                    let extended_profile = Object.assign({}, profile);
-                    extended_profile.username = extended_profile.name = extended_profile._json.name;
-                    // console.log(extended_profile);
-                    done(null, extended_profile);
-                }
-            }
-        },
-        users: [{
-                username: "<add your username here>",
-                permissions: ["*"]
-            }
-        ]
-    },
+    // adminAuth: {
+    //     type: "strategy",
+    //     strategy: {
+    //         name: "auth0",
+    //         label: 'Sign in with Auth0',
+    //         icon: "fa-auth0",
+    //         strategy: require("passport-auth0").Strategy,
+    //         options: {
+    //             domain: process.env.AUTH0_DOMAIN,
+    //             clientID: process.env.AUTH0_CLIENT_ID,
+    //             clientSecret: process.env.AUTH0_CLIENT_SECRET,
+    //             callbackURL: process.env.BASE_URL + "/auth/strategy/callback",
+    //             scope: ['openid', 'email', 'profile'],
+    //             response_type: 'code',
+    //             verify: function (accessToken, refreshToken, profile, done) {
+    //                 //by default auth0 does not include a username attribute in its Profile class, so 
+    //                 //we convert it to a plain object and copy the name attribute from the original 
+    //                 //profile json to the expected username slot
+    //                 let extended_profile = Object.assign({}, profile);
+    //                 extended_profile.username = extended_profile.name = extended_profile._json.name;
+    //                 // console.log(extended_profile);
+    //                 done(null, extended_profile);
+    //             }
+    //         }
+    //     },
+    //     users: [{
+    //             username: "<add your username here>",
+    //             permissions: ["*"]
+    //         }
+    //     ]
+    // },
 
     // To password protect the node-defined HTTP endpoints (httpNodeRoot), or
     // the static content (httpStatic), the following properties can be used.
