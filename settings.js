@@ -1,4 +1,3 @@
-
 /**
  * Copyright JS Foundation and other contributors, http://js.foundation
  *
@@ -23,7 +22,7 @@ require('dotenv').config();
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
     uiPort: 8081,
-    awsRegion: process.env.EFS_REGION,
+    // awsRegion: process.env.EFS_REGION,
     //twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
     // awsS3Bucket: process.env.STATE_STORAGE_BUCKET,
     // storageModule: require('node-red-contrib-storage-s3'),
@@ -240,10 +239,10 @@ module.exports = {
     // can be accessed in a function block as:
     //    context.global.os
 
-    functionGlobalContext: {
-        aws: require('aws-sdk'),
-        twilio: require('twilio')
-    },
+    // functionGlobalContext: {
+    //     aws: require('aws-sdk'),
+    //     twilio: require('twilio')
+    // },
 
     // Context Storage
     // The following property can be used to enable context storage. The configuration
