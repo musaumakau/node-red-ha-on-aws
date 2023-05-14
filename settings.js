@@ -17,7 +17,7 @@
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
 //var fs = require("fs");
-// require('dotenv').config();
+require('dotenv').config();
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
@@ -85,7 +85,7 @@ module.exports = {
 
     // By default, all user data is stored in the Node-RED install directory. To
     // use a different location, the following property can be used
-//     userDir: process.env.EFS_MOUNT_DIR + '/.node-red/',
+    userDir: process.env.EFS_MOUNT_DIR + '/.node-red/',
 
     // Node-RED scans the `nodes` directory in the install directory to find nodes.
     // The following property can be used to specify an additional directory to scan.
@@ -274,30 +274,30 @@ module.exports = {
     //     },
     // },
     // Configure the logging output
-    logging: {
-        // Only console logging is currently supported
-        console: {
-            // Level of logging to be recorded. Options are:
-            // fatal - only those errors which make the application unusable should be recorded
-            // error - record errors which are deemed fatal for a particular request + fatal errors
-            // warn - record problems which are non fatal + errors + fatal errors
-            // info - record information about the general running of the application + warn + error + fatal errors
-            // debug - record information which is more verbose than info + info + warn + error + fatal errors
-            // trace - record very detailed logging + debug + info + warn + error + fatal errors
-            // off - turn off all logging (doesn't affect metrics or audit)
-            level: "fatal",
-            // Whether or not to include metric events in the log output
-            metrics: false,
-            // Whether or not to include audit events in the log output
-            audit: false
-        }
-    },
+//     logging: {
+//         // Only console logging is currently supported
+//         console: {
+//             // Level of logging to be recorded. Options are:
+//             // fatal - only those errors which make the application unusable should be recorded
+//             // error - record errors which are deemed fatal for a particular request + fatal errors
+//             // warn - record problems which are non fatal + errors + fatal errors
+//             // info - record information about the general running of the application + warn + error + fatal errors
+//             // debug - record information which is more verbose than info + info + warn + error + fatal errors
+//             // trace - record very detailed logging + debug + info + warn + error + fatal errors
+//             // off - turn off all logging (doesn't affect metrics or audit)
+//             level: "fatal",
+//             // Whether or not to include metric events in the log output
+//             metrics: false,
+//             // Whether or not to include audit events in the log output
+//             audit: false
+//         }
+//     },
 
-    // Customising the editor
-    editorTheme: {
-        projects: {
-            // To enable the Projects feature, set this value to true
-            enabled: true
-        }
-    },
+//     // Customising the editor
+//     editorTheme: {
+//         projects: {
+//             // To enable the Projects feature, set this value to true
+//             enabled: true
+//         }
+//     },
 };
