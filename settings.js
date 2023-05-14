@@ -17,12 +17,12 @@
 // The `https` setting requires the `fs` module. Uncomment the following
 // to make it available:
 //var fs = require("fs");
-require('dotenv').config();
+// require('dotenv').config();
 
 module.exports = {
     // the tcp port that the Node-RED web server is listening on
     uiPort: 8081,
-    awsRegion: process.env.EFS_REGION,
+//     awsRegion: process.env.EFS_REGION,
     // twilioAuthToken: process.env.TWILIO_AUTH_TOKEN,
     // awsS3Bucket: process.env.STATE_STORAGE_BUCKET,
     // storageModule: require('node-red-contrib-storage-s3'),
