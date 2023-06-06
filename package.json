@@ -1,10 +1,9 @@
 {
   "name": "node-red-on-elastic-beanstalk",
-  "version": "1.0.1",
-  "engines" : { 
-    "npm" : ">=8.0.0",
-    "node" : ">=16.0.0"
-  }
+  "version": "1.0.0",
+  "engines": {
+    "node": ">=16.0.0",
+    "npm": ">=9.0.0"
   },
   "private": true,
   "dependencies": {
@@ -38,6 +37,6 @@
   "scripts": {
     "start": "nodemon -L -V --delay 10 --watch /efs/.node-red --ignore /efs/.node-red/**/*.backup ./node_modules/.bin/node-red --settings settings.js"
   },
-  "author": "guy@alchemy.com.au",
+  "author": "juan",
   "license": ""
 }
